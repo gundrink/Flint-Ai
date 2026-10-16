@@ -1,0 +1,15 @@
+{
+  "name": "flintai",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --filter @flintai/web dev",
+    "build": "pnpm --filter @flintai/web build",
+    "lint": "pnpm --filter @flintai/web lint",
+    "start": "pnpm --filter @flintai/web start"
+  },
+  "engines": {
+    "node": ">=24",
+    "pnpm": ">=10"
+  },
+  "packageManager": "pnpm@10.33.0"
+}

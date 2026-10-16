@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 24" fill="none" role="img" aria-label="Orbit">
+  <g transform="rotate(-18 24 12)">
+    <ellipse cx="24" cy="12" rx="18.5" ry="6.5" stroke="#000" stroke-width="2.15" />
+  </g>
+  <g transform="rotate(24 24 12)">
+    <ellipse cx="24" cy="12" rx="12" ry="4" stroke="#000" stroke-width="1.75" stroke-opacity="0.72" />
+  </g>
+  <circle cx="24" cy="12" r="2.35" fill="#000" />
+  <circle cx="39.2" cy="7.6" r="1.65" fill="#000" />
+</svg>

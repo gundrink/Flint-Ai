@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/*
+  Light UI tokens from 0g.ai Webflow shared CSS (https://0g.ai/):
+  body #fefefe, text #000, Regola Pro + Geistmono → DM Sans + Geist Mono here.
+  --purple-1 #b75fff … --purple-shade #9200e1, focus #2d62ff, borders #e5e5e5.
+*/
+
+:root {
+  --background: #f9f5fc;
+  --foreground: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-dm-sans), Arial, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-sw-canvas: #fefefe;
+  --color-sw-fg: #000000;
+  --color-sw-muted: #222222;
+  --color-sw-muted-mid: #444444;
+  --color-sw-border: #e5e5e5;
+  --color-sw-divider: #d9d9d9;
+  --color-sw-input-border: #cccccc;
+  --color-sw-p1: #b75fff;
+  --color-sw-p2: #cb8aff;
+  --color-sw-p3: #d5a3ff;
+  --color-sw-p4: #e3c1ff;
+  --color-sw-p5: #f3e6fe;
+  --color-sw-purple-shade: #9200e1;
+  --color-sw-focus: #2d62ff;
+
+  --animate-flint-rise: flint-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-flint-float: flint-float 7s ease-in-out infinite;
+  --animate-flint-spin: flint-spin 32s linear infinite;
+  --animate-flint-spin-rev: flint-spin 22s linear infinite reverse;
+  --animate-flint-marquee: flint-marquee 46s linear infinite;
+  --animate-flint-pulse: flint-pulse 2.8s ease-in-out infinite;
+
+  @keyframes flint-rise {
+    from {
+      opacity: 0;
+      transform: translateY(22px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes flint-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes flint-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes flint-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes flint-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.35);
+    }
+  }
+
+  @keyframes flint-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Alternating band: dotted tile from 0G site (Webflow CDN). */
+.sw-bg-dotted {
+  background-color: #ffffff;
+  background-image: url("https://cdn.prod.website-files.com/680b884d38733122a923739b/681704681e7e0d623354a092_Dotted%20BG.webp");
+  background-repeat: repeat;
+}
+
+body {
+  min-height: 100%;
+  color: var(--color-sw-fg);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  background-color: #f5f0fb;
+  background-image:
+    radial-gradient(ellipse 110% 85% at 12% -8%, rgb(183 95 255 / 0.2), transparent 52%),
+    radial-gradient(ellipse 95% 75% at 98% 4%, rgb(45 98 255 / 0.11), transparent 48%),
+    radial-gradient(ellipse 130% 70% at 50% 108%, rgb(227 193 255 / 0.35), transparent 58%),
+    linear-gradient(
+      168deg,
+      #fefeff 0%,
+      #faf6ff 32%,
+      #f4ecfc 58%,
+      #efe5f8 100%
+    ),
+    repeating-linear-gradient(
+      -12deg,
+      transparent,
+      transparent 72px,
+      rgb(183 95 255 / 0.025) 72px,
+      rgb(183 95 255 / 0.025) 73px
+    );
+  background-size: auto, auto, auto, auto, 240px 240px;
+}
+
+@media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
+  body {
+    background-attachment: fixed;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@supports (animation-timeline: scroll()) {
+  .flint-scroll-progress {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 80;
+    height: 2px;
+    transform-origin: left center;
+    background: #9200e1;
+    animation: flint-progress linear;
+    animation-timeline: scroll(root);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flint-scroll-progress,
+  .animate-flint-rise,
+  .animate-flint-float,
+  .animate-flint-spin,
+  .animate-flint-spin-rev,
+  .animate-flint-marquee,
+  .animate-flint-pulse {
+    animation: none !important;
+  }
+}
