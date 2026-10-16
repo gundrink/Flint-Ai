@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useConnectWallet } from "@/components/connect-wallet-context";
 import { SiteMarks } from "@/components/site-marks";
 import { LogoMark } from "@/components/logo-mark";
+import { site } from "@/lib/site";
 import { swBtnNav, swBtnNavSm, swBtnSecondarySm } from "@/lib/sw-button";
 
 const mainNav = [
@@ -82,13 +83,13 @@ export function SiteHeader() {
               <Link
                 href="/"
                 className={`group/brand flex shrink-0 items-center gap-3 rounded-xl py-1 pr-2 text-sw-fg ${easeOutExpo} transition-opacity duration-200 hover:opacity-85 active:opacity-100`}
-                aria-label="FlintAi home"
+                aria-label={`${site.name} home`}
               >
                 <span className="flex h-[1.5rem] w-[3rem] items-center text-sw-fg">
                   <LogoMark className="h-full w-full" />
                 </span>
                 <span className="hidden text-[15px] font-semibold leading-none tracking-tight sm:inline lg:text-[17px]">
-                  FlintAi
+                  {site.name}
                 </span>
               </Link>
               <div className="min-w-0">

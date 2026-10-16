@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LogoMark } from "@/components/logo-mark";
 import { SiteFooterConnectWallet } from "@/components/site-footer-connect";
 import { SiteMarks } from "@/components/site-marks";
+import { site } from "@/lib/site";
 
 const productNav = [
   { href: "/plugins", label: "Plugins" },
@@ -18,12 +19,12 @@ export function SiteFooter() {
             <Link
               href="/"
               className="inline-flex items-center gap-2.5 text-sw-fg transition-opacity hover:opacity-85"
-              aria-label="FlintAi home"
+              aria-label={`${site.name} home`}
             >
               <span className="flex h-5 w-10 shrink-0">
                 <LogoMark className="h-full w-full" />
               </span>
-              <span className="text-sm font-semibold tracking-tight">FlintAi</span>
+              <span className="text-sm font-semibold tracking-tight">{site.name}</span>
             </Link>
             <p className="mt-2 text-sm font-light leading-relaxed text-sw-muted">
               Discover plugins, publish your own, and track installs and earnings. Browse in the
@@ -69,7 +70,7 @@ export function SiteFooter() {
           <p className="text-xs font-light text-sw-muted-mid">
             Open source oriented · Built for sharp agents
           </p>
-          <p className="text-xs font-light text-sw-muted-mid">© {new Date().getFullYear()} FlintAi</p>
+          <p className="text-xs font-light text-sw-muted-mid">© {new Date().getFullYear()} {site.name}</p>
         </div>
       </div>
     </footer>

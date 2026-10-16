@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { LogoMark } from "@/components/logo-mark";
 import { useConnectWallet } from "@/components/connect-wallet-context";
+import { site } from "@/lib/site";
 import { swBtnPrimarySm, swBtnSecondarySm } from "@/lib/sw-button";
 import { useSolanaSession } from "@/lib/use-solana";
 
@@ -83,12 +84,12 @@ function DashboardAccessGate() {
         <Link
           href="/"
           className="flex items-center gap-2 text-sw-fg opacity-80 transition-opacity hover:opacity-100"
-          aria-label="FlintAi home"
+          aria-label={`${site.name} home`}
         >
           <span className="flex h-6 w-12">
             <LogoMark className="h-full w-full" />
           </span>
-          <span className="text-sm font-semibold">FlintAi</span>
+          <span className="text-sm font-semibold">{site.name}</span>
         </Link>
         <div className="max-w-md space-y-3">
           <h1 className="text-2xl font-light tracking-tight text-sw-fg">Dashboard</h1>
@@ -121,7 +122,7 @@ function DashboardAccessGate() {
         <span className="flex h-6 w-12">
           <LogoMark className="h-full w-full" />
         </span>
-        <span className="text-sm font-semibold">FlintAi</span>
+        <span className="text-sm font-semibold">{site.name}</span>
       </Link>
       <div className="max-w-md space-y-3">
         <h1 className="text-2xl font-light tracking-tight text-sw-fg">Wrong network</h1>
@@ -167,12 +168,12 @@ function DashboardShell({ children }: { children: React.ReactNode }) {
           <Link
             href="/"
             className="flex items-center gap-2.5 text-sw-fg transition-opacity duration-200 hover:opacity-75"
-            aria-label="FlintAi home"
+            aria-label={`${site.name} home`}
           >
             <span className="flex h-5 w-10 items-center">
               <LogoMark className="h-full w-full" />
             </span>
-            <span className="text-sm font-semibold tracking-tight">FlintAi</span>
+            <span className="text-sm font-semibold tracking-tight">{site.name}</span>
           </Link>
         </div>
 
