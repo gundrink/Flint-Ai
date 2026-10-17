@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { LandingIcon, type IconName } from "@/components/landing/landing-icon";
+import { site } from "@/lib/site";
 
 const faqs: { q: string; a: string; icon: IconName }[] = [
   {
@@ -31,7 +32,7 @@ const faqs: { q: string; a: string; icon: IconName }[] = [
     icon: "box",
   },
   {
-    q: "What is the $FLINTAI mark in the header?",
+    q: `What is the $${site.ticker} mark in the header?`,
     a: "The ticker for the FlintAi coin. It sits in the header and the footer with X, Telegram, and the contract address. The coin itself is created from the /app page. The address chip fills in after that mint is saved.",
     icon: "spark",
   },

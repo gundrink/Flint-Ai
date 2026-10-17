@@ -6,10 +6,19 @@ function optional(value: string | undefined): string {
   return trimmed;
 }
 
-function externalUrl(value: string | undefined): string {
+function httpUrl(value: string | undefined): string {
   const trimmed = optional(value);
   if (!/^https?:\/\//i.test(trimmed)) return "";
   return trimmed;
+}
+
+function xUrl(value: string | undefined): string {
+  const trimmed = optional(value);
+  if (!trimmed) return "";
+  if (/^https?:\/\//i.test(trimmed)) return trimmed;
+  const handle = trimmed.replace(/^@/, "");
+  if (!/^[A-Za-z0-9_]{1,15}$/.test(handle)) return "";
+  return `https://x.com/${handle}`;
 }
 
 /**
@@ -18,12 +27,12 @@ function externalUrl(value: string | undefined): string {
  */
 export const site = {
   name: optional(process.env.NEXT_PUBLIC_NAME) || "FlintAi",
-  ticker: optional(process.env.NEXT_PUBLIC_TICKER) || "FLINTAI",
+  ticker: optional(process.env.NEXT_PUBLIC_TICKER) || "AGENTFLINT",
   tagline: "Struck once on Solana.",
   description:
     "FlintAi is a coin on Solana mainnet. The site carries the ticker, the social links, and the contract address.",
   accent: "#E85D04",
-  xUrl: externalUrl(process.env.NEXT_PUBLIC_X_URL),
-  telegramUrl: externalUrl(process.env.NEXT_PUBLIC_TELEGRAM_URL),
+  xUrl: xUrl(process.env.NEXT_PUBLIC_X_URL),
+  telegramUrl: httpUrl(process.env.NEXT_PUBLIC_TELEGRAM_URL),
   ca: optional(process.env.NEXT_PUBLIC_CA),
 };

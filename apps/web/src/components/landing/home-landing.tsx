@@ -8,6 +8,7 @@ import { InstallSnippet } from "@/components/install-snippet";
 import { Reveal } from "@/components/motion/reveal";
 import { ScrambleText } from "@/components/motion/scramble-text";
 import { SkillCard } from "@/components/skill-card";
+import { site } from "@/lib/site";
 import { swBtnPrimary, swBtnSecondary } from "@/lib/sw-button";
 import type { SkillPreview } from "@/lib/skills-types";
 
@@ -78,7 +79,7 @@ const capabilities: { title: string; body: string; icon: IconName }[] = [
   },
   {
     title: "Ticker in the chrome",
-    body: "$FLINTAI, X, Telegram, and the contract address sit in the header and the footer. An empty address reads as not struck yet.",
+    body: `$${site.ticker}, X, Telegram, and the contract address sit in the header and the footer. An empty address reads as not struck yet.`,
     icon: "spark",
   },
 ];
